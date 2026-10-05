@@ -18,7 +18,9 @@ st.write(
 
 # Load retail dataset
 df = pd.read_csv(
-    "https://raw.githubusercontent.com/valiotti/plotly-superstore/main/superstore.csv"
+    "https://raw.githubusercontent.com/valiotti/plotly-superstore/main/superstore.csv",
+    sep=";"
+)
 )
 
 df["Order Date"] = pd.to_datetime(df["Order Date"])
