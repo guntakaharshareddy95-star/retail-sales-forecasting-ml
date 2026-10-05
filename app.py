@@ -16,19 +16,15 @@ st.write(
     "and future sales prediction."
 )
 
-# Load retail dataset
+# Load dataset
 df = pd.read_csv(
     "https://raw.githubusercontent.com/valiotti/plotly-superstore/main/superstore.csv",
     sep=";"
 )
-)
 
 df["Order Date"] = pd.to_datetime(df["Order Date"])
 
-# -----------------------------
-# Key Metrics
-# -----------------------------
-
+# Metrics
 total_sales = df["Sales"].sum()
 total_profit = df["Profit"].sum()
 total_orders = df["Order ID"].nunique()
@@ -41,10 +37,7 @@ col3.metric("Total Orders", f"{total_orders:,}")
 
 st.divider()
 
-# -----------------------------
 # Monthly Sales Trend
-# -----------------------------
-
 st.subheader("📈 Monthly Sales Trend")
 
 monthly_sales = (
@@ -70,10 +63,7 @@ ax.grid(True)
 
 st.pyplot(fig)
 
-# -----------------------------
 # Sales by Category
-# -----------------------------
-
 st.subheader("🏷️ Sales by Product Category")
 
 category_sales = (
@@ -84,15 +74,14 @@ category_sales = (
 
 st.bar_chart(category_sales)
 
-# -----------------------------
 # Future Sales Prediction
-# -----------------------------
-
 st.subheader("🔮 Future Sales Prediction")
 
 future_sales = pd.read_csv("future_sales_predictions.csv")
 
-future_sales["Month"] = pd.to_datetime(future_sales["Month"])
+future_sales["Month"] = pd.to_datetime(
+    future_sales["Month"]
+)
 
 st.dataframe(
     future_sales,
@@ -114,4 +103,4 @@ ax2.grid(True)
 
 st.pyplot(fig2)
 
-st.success("Dashboard loaded successfully!")
+st.success("Dashboard loaded successfully! 🎉")
